@@ -1,0 +1,27 @@
+{
+	"name": "@labx-ui/docs",
+	"version": "0.0.0",
+	"private": true,
+	"scripts": {
+		"build": "next build",
+		"start": "next start ",
+		"dev": "next dev -p 3002",
+		"lint": "TIMING=1 next lint",
+		"clean": "rm -rf .turbo && rm -rf node_modules && rm -rf .next"
+	},
+	"dependencies": {
+		"@labx-ui/core": "*",
+		"@labx-ui/admin": "*",
+		"next": "^12.0.8",
+		"react": "^18.1.0",
+		"react-dom": "^18.1.0"
+	},
+	"devDependencies": {
+		"@labx-ui/tsconfig": "*",
+		"@types/node": "^17.0.12",
+		"@types/react": "^18.0.10",
+		"@types/react-dom": "^18.0.5",
+		"eslint-preset-acme": "*",
+		"typescript": "^4.5.4"
+	}
+}
