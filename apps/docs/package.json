@@ -10,9 +10,13 @@
 		"clean": "rm -rf .turbo && rm -rf node_modules && rm -rf .next"
 	},
 	"dependencies": {
-		"@labx-ui/core": "*",
+		"@chakra-ui/react": "^2.1.2",
+		"@emotion/react": "^11",
+		"@emotion/styled": "^11",
 		"@labx-ui/admin": "*",
+		"framer-motion": "^6",
 		"next": "^12.0.8",
+		"nextjs-progressbar": "^0.0.14",
 		"react": "^18.1.0",
 		"react-dom": "^18.1.0"
 	},
