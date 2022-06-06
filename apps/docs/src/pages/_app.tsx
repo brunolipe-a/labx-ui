@@ -6,8 +6,9 @@ import {
   LayoutConfig,
 } from '@labx-ui/core'
 
-import { Logo, PageShell, theme } from '@labx-ui/admin'
+import { Logo, theme } from '@labx-ui/admin'
 import { Progress } from '../components/Progress'
+import layout from '../config/layout'
 
 const auth: AuthProps = {
   TOKEN_KEY: '@admin-labx:token',
@@ -30,15 +31,11 @@ export default function MyApp({ Component, pageProps }: AppProps) {
   return (
     <LabxProvider
       theme={theme}
-      layout={
-        { title: 'Admin Template', Logo: Logo } as unknown as LayoutConfig
-      }
+      layout={layout}
     >
-      <Progress />
       <LabxAuthProvider auth={auth}>
-        <PageShell>
+          <Progress />
           <Component {...pageProps} />
-        </PageShell>
       </LabxAuthProvider>
     </LabxProvider>
   )
