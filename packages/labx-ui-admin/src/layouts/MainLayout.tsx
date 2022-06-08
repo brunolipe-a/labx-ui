@@ -24,8 +24,6 @@ export function MainLayout({ children, pageTitle, ...rest }: MainLayoutProps) {
 
   const shouldShowLoading = useAuthLoading({ redirectURL: loginUrl })
 
-  console.log(shouldShowLoading)
-
   if (shouldShowLoading) {
     return <LoadingOverlay />
   }

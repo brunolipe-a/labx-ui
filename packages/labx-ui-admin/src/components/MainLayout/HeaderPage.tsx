@@ -74,7 +74,7 @@ export function HeaderPage({ title, links = [] }: HeaderPageProps) {
 
           <BreadcrumbItem isCurrentPage>
             <BreadcrumbLink
-              _hover={{}}
+              _hover={{ cursor: 'not-allowed' }}
               color={mode('gray.400', 'gray.500')}
               userSelect="none"
               href="#"

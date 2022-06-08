@@ -51,7 +51,7 @@ function UserMenuComponent({
           <Avatar bg="brand.500" color="white" name={user.name} size="sm" />
         </Stack>
       </MenuButton>
-      <MenuList color={mode('gray.600', 'whiteAlpha.900')}>
+      <MenuList zIndex="docked" color={mode('gray.600', 'whiteAlpha.900')}>
         <Link href="/profile" textDecoration="none">
           <MenuItem icon={<FiUser size={16} />}>Seu perfil</MenuItem>
         </Link>

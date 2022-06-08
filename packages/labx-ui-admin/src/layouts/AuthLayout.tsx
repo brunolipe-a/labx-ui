@@ -27,13 +27,13 @@ export function AuthLayout({
 }: AuthLayoutProps) {
   const { Logo, title, titleSeparator = '|', dashboardUrl } = useLayout()
 
-  const bg = useColorModeValue('white', 'transparent')
-
-  const copyrightColor = useColorModeValue('gray.400', 'gray.600')
-
   if (!Logo) {
     throw new Error('You must provide a Logo component in your layout')
   }
+
+  const bg = useColorModeValue('white', 'transparent')
+
+  const copyrightColor = useColorModeValue('gray.400', 'gray.600')
 
   const shouldShowLoading = useGuestLoading({ redirectURL: dashboardUrl })
 

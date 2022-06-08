@@ -9,14 +9,14 @@ interface SidebarDrawerProps {
 const SidebarDrawerContext = createContext({} as UseDisclosureReturn)
 
 export function SidebarDrawerProvider({ children }: SidebarDrawerProps) {
-  const disclosure = useDisclosure()
+  const { onClose, ...rest } = useDisclosure()
 
   useEffect(() => {
-    disclosure.onClose()
-  }, [disclosure])
+    onClose()
+  }, [onClose])
 
   return (
-    <SidebarDrawerContext.Provider value={disclosure}>
+    <SidebarDrawerContext.Provider value={{ onClose, ...rest }}>
       {children}
     </SidebarDrawerContext.Provider>
   )

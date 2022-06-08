@@ -1,6 +1,7 @@
 export * from './Logo'
 export * from './Link'
 export * from './Card'
+export * from './Table'
 export * from './LoadingOverlay'
 
 export * from './MainLayout'

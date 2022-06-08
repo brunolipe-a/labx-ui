@@ -1,31 +1,17 @@
 import type { AppProps } from 'next/app'
-import {
-  AuthProps,
-  LabxAuthProvider,
-  LabxProvider,
-  LayoutConfig,
-} from '@labx-ui/core'
+import { LabxAuthProvider, LabxProvider } from '@labx-ui/core'
 
-import { Logo, theme } from '@labx-ui/admin'
+import { theme } from '@labx-ui/admin'
+
+import { QueryClient, QueryClientProvider } from 'react-query'
+
 import { Progress } from '../components/Progress'
+
 import layout from '../config/layout'
 
-const auth: AuthProps = {
-  TOKEN_KEY: '@admin-labx:token',
-  authenticatorCallback: async (data) => {
-    return {
-      token: 'token',
-    }
-  },
-  getUserCallback: async () => {
-    return {
-      email: 'johndoe@example.com',
-      id: '1',
-      name: 'John Doe',
-      permissions: [],
-    }
-  },
-}
+import { auth } from '../services/auth'
+
+const client = new QueryClient()
 
 export default function MyApp({ Component, pageProps }: AppProps) {
   return (
@@ -33,10 +19,12 @@ export default function MyApp({ Component, pageProps }: AppProps) {
       theme={theme}
       layout={layout}
     >
+    <QueryClientProvider client={client}>
       <LabxAuthProvider auth={auth}>
           <Progress />
           <Component {...pageProps} />
       </LabxAuthProvider>
+      </QueryClientProvider>
     </LabxProvider>
   )
 }
