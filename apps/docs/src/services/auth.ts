@@ -2,7 +2,7 @@ import { AuthProps } from '@labx-ui/core'
 
 export const auth: AuthProps = {
   TOKEN_KEY: '@admin-labx:token',
-  authenticatorCallback: async data => {
+  authenticatorCallback: async (data) => {
     return {
       token: 'token',
     }

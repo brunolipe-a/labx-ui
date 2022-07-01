@@ -18,6 +18,7 @@ import { AuthUser } from '../types/auth'
 
 import { useAbility } from './AbilityContext'
 import { useLayout } from './LayoutContext'
+import { AxiosError } from 'axios'
 
 export interface AuthProps {
   authenticatorCallback: (data: SignInProps) => Promise<{ token: string }>
@@ -69,12 +70,13 @@ export function LabxAuthProvider({ children, auth }: AuthProviderProps) {
 
       Router.push(loginUrl)
 
-      destroyCookie(undefined, TOKEN_KEY)
+      destroyCookie(undefined, TOKEN_KEY, { sameSite: true })
 
       toast({
         title: 'Deslogado',
         description: 'Você foi deslogado com sucesso.',
         status: 'success',
+        variant: 'top-accent',
         position: 'top-right',
         duration: 4000,
         isClosable: true,
@@ -107,12 +109,22 @@ export function LabxAuthProvider({ children, auth }: AuthProviderProps) {
       setCookie(undefined, TOKEN_KEY, token, {
         maxAge: 60 * 60 * 24, // 1 day,
         path: '/',
-        sameSite: true
+        sameSite: true,
       })
 
       await getUserData()
     } catch (err) {
-      console.error(err)
+      const error = err as AxiosError<{ message: string }>
+
+      toast({
+        title: 'Não foi possível autenticar.',
+        position: 'top-right',
+        variant: 'top-accent',
+        description: error.response?.data?.message || error.message,
+        status: 'error',
+        duration: 4000,
+        isClosable: true,
+      })
     }
   }
 
