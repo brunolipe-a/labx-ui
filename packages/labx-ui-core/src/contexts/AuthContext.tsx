@@ -107,6 +107,7 @@ export function LabxAuthProvider({ children, auth }: AuthProviderProps) {
       setCookie(undefined, TOKEN_KEY, token, {
         maxAge: 60 * 60 * 24, // 1 day,
         path: '/',
+        sameSite: true
       })
 
       await getUserData()
